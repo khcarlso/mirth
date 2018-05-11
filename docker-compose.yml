@@ -4,10 +4,9 @@ services:
     image: "postgres:alpine"
     ports: 
       - "5432:5432"
-    # environment:
-    #   POSTGRES_PASSWORD: mirth
-    #   POSTGRES_USER: mirth
-    #   POSTGRES_DB: mirth
+    environment:
+      POSTGRES_PASSWORD: mirth
+      POSTGRES_DB: mirth
     volumes:
       - type: volume
         source: mirth-data
@@ -31,6 +30,7 @@ services:
       - db
     networks:
       - mirthnet
+    restart: always
   
 networks:
   mirthnet:

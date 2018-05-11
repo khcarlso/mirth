@@ -12,7 +12,7 @@ The first time this is run it will download the postgres:alpine image and build 
 
 # Getting started with MirthConnect
 After docker-compose has done its thing, navitage to http://localhost:8080 in a browser. Once the page loads, click on the admin
-button to download the .jnlp file and run it from your desktop. You're in!
+button to download the .jnlp file and run it from your desktop. The default username/password is admin/admin. You're in!
 
 MirthConnect documentation is avialable here: http://www.mirthcorp.com/community/wiki/display/mirth/Getting+Started+Guide
 
