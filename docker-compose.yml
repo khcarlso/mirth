@@ -1,0 +1,40 @@
+version: '3.2'
+services:
+  db:
+    image: "postgres:alpine"
+    ports: 
+      - "5432:5432"
+    # environment:
+    #   POSTGRES_PASSWORD: mirth
+    #   POSTGRES_USER: mirth
+    #   POSTGRES_DB: mirth
+    volumes:
+      - type: volume
+        source: mirth-data
+        target: /var/lib/postgresql/data
+    networks:
+      - mirthnet
+
+  mirth:
+    build: 
+      context: ./mcserver
+      dockerfile: Dockerfile
+      args:
+        MIRTH_CONNECT_VERSION: 3.5.2.b204
+    image: khcarlso/mirth
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    links:
+      - db
+    depends_on:
+      - db
+    networks:
+      - mirthnet
+  
+networks:
+  mirthnet:
+
+volumes:
+  mirth-data:
+  
