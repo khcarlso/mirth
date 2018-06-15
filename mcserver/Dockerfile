@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 ARG MIRTH_CONNECT_VERSION
 
 RUN apt-get update \
- && apt-get upgrade \
+ && apt-get -y upgrade \
  && apt-get install -y curl \
  && apt-get purge openjdk-\* \
  && apt-get install -y python-software-properties \
@@ -16,6 +16,7 @@ RUN apt-get update \
  && curl -o mirthconnect-$MIRTH_CONNECT_VERSION-unix.tar.gz http://downloads.mirthcorp.com/connect/$MIRTH_CONNECT_VERSION/mirthconnect-$MIRTH_CONNECT_VERSION-unix.tar.gz \
  && tar xzfv mirthconnect-$MIRTH_CONNECT_VERSION-unix.tar.gz -C /usr/local/ \
  && mv /usr/local/Mirth\ Connect/ /usr/local/mirthconnect/ 
+
 
 ADD mirth.properties /usr/local/mirthconnect/conf
 WORKDIR /usr/local/mirthconnect
